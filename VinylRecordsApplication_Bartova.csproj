@@ -66,7 +66,9 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Classes\Country.cs" />
     <Compile Include="Classes\DBConnection.cs" />
+    <Compile Include="Classes\State.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -100,7 +102,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Image\BD.sql" />
     <Resource Include="Image\ic_Manufacture.png" />
     <Resource Include="Image\ic_State.png" />
     <Resource Include="Image\ic_supply.png" />
