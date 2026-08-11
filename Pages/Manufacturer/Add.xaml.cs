@@ -15,42 +15,41 @@ namespace VinylRecordsApplication_Bartova.Pages.Manufacturer
     {
         public IEnumerable<Classes.Country> AllCountries = Classes.Country.AllCountries();
         Classes.Manufacturer changeManufacturer;
+
         public Add(Classes.Manufacturer changeManufacturer = null)
         {
             InitializeComponent();
-            foreach(var Countrie in AllCountries)
+            foreach (var Countrie in AllCountries)
                 tbCountry.Items.Add(Countrie.Name);
-            if(AllCountries.Count()>0)
+            if (AllCountries.Count() > 0)
                 tbCountry.SelectedIndex = 0;
-            if(changeManufacturer != null)
+
+            if (changeManufacturer != null)
             {
                 this.changeManufacturer = changeManufacturer;
                 tbName.Text = changeManufacturer.Name;
                 tbPhone.Text = changeManufacturer.Phone;
                 tbEmail.Text = changeManufacturer.Mail;
-                tbCountry.SelectedIndex = AllCountries.ToList().FindIndex(x=>x.Id == changeManufacturer.CountryCode);
+                tbCountry.SelectedIndex = AllCountries.ToList().FindIndex(x => x.Id == changeManufacturer.CountryCode);
                 addBth.Content = "Изменить";
             }
         }
+
         private void AddManufacturer(object sender, RoutedEventArgs e)
         {
-            if (!String.IsNullOrEmpty(tbName.Text))
-
-                if (!String.IsNullOrEmpty(tbPhone.Text))
-
-                    if (!String.IsNullOrEmpty(tbEmail.Text))
-
+            if (!string.IsNullOrEmpty(tbName.Text))
+                if (!string.IsNullOrEmpty(tbPhone.Text))
+                    if (!string.IsNullOrEmpty(tbEmail.Text))
                         if (CorrectPhone(tbPhone.Text))
-
                             if (CorrectEmail(tbEmail.Text))
                             {
                                 if (changeManufacturer == null)
                                 {
-                                    Classes.Manufacturer manufacturer = new Classes.Manufacturer();
+                                    Classes.Manufacturer manufacturer = new Classes.Manufacturer()
                                     {
-                                        Name = tbName.Text;
-                                        Phone = tbPhone.Text;
-                                        Mail = tbEmail.Text;
+                                        Name = tbName.Text,
+                                        Phone = tbPhone.Text,
+                                        Mail = tbEmail.Text,
                                         CountryCode = AllCountries.Where(x => x.Name == tbCountry.SelectedItem.ToString()).First().Id
                                     };
                                     manufacturer.Save();
@@ -66,16 +65,25 @@ namespace VinylRecordsApplication_Bartova.Pages.Manufacturer
                                     changeManufacturer.Save(true);
                                     MessageBox.Show($"Поставщик {changeManufacturer.Name} успешно изменён.", "Уведомление");
                                 }
-                            } else
-                                MessageBox.Show("Пожалуйста, укажите почту поставщика в формате xx@xx.xx", "Предупреждение");
+                            }
+                            else
+                                MessageBox.Show("Пожалуйста, укажите почту поставщика в формате xx@xx.xx.", "Предупреждение");
                         else
-                            MessageBox.Show("Пожалуйста, укажите номер поставщика в формате 89000000000", "Предупреждение");
+                            MessageBox.Show("Пожалуйста, укажите номер поставщика в формате 89000000000.", "Предупреждение");
                     else
-                        MessageBox.Show("Пожалуйста, укажите почту поставщика", "Предупреждение");
+                        MessageBox.Show("Пожалуйста, укажите почту поставщика.", "Предупреждение");
                 else
                     MessageBox.Show("Пожалуйста, укажите телефон поставщика.", "Предупреждение");
             else
-                MessageBox.Show("Пожалуйста, укажите наименование.", "Предупреждение");
+                MessageBox.Show("Пожалуйста, укажите наименование поставщика.", "Предупреждение");
+        }
+
+        public bool CorrectPhone(string Value)
+        {
+            string sRegex = "89[0-9]{9}$";
+            Regex regex = new Regex(sRegex);
+            MatchCollection matches = regex.Matches(Value);
+            return matches.Count > 0;
         }
 
         public bool CorrectEmail(string Value)
@@ -86,16 +94,9 @@ namespace VinylRecordsApplication_Bartova.Pages.Manufacturer
             return matches.Count > 0;
         }
 
-        public bool CorrectPhone(string Value)
-        {
-            string sRegex = "89[0-9]{9}$";
-            Regex regex = new Regex(sRegex);
-            MatchCollection matches = regex.Matches(Value);
-            return matches.Count > 0;
-        }
         private void tbPreviewNumber(object sender, TextCompositionEventArgs e)
         {
-            e.Handled = !(Char.IsDigit(e.Text, 0));
+            e.Handled = !(char.IsDigit(e.Text, 0));
         }
     }
 }

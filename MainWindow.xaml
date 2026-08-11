@@ -9,17 +9,17 @@
     <Grid>
         <Menu Height="25" VerticalAlignment="Top">
             <MenuItem Header="Пластинки" Height="25">
-                <MenuItem Header="Список" Click="OpenRecordList"></MenuItem>
-                <MenuItem Header="Добавить" Click="OpenRecordAdd"></MenuItem>
-                <MenuItem Header="Экспортировать" Click="ExportRecord"></MenuItem>
+                <MenuItem Header="Список" Click="OpenRecordList"/>
+                <MenuItem Header="Добавить" Click="OpenRecordAdd"/>
+                <MenuItem Header="Экспортировать" Click="ExportRecord"/>
             </MenuItem>
             <MenuItem Header="Поставщики">
-                <MenuItem Header="Список" Click="OpenManufacrurersList"></MenuItem>
-                <MenuItem Header="Добавить" Click="OpenManufacrurersAdd"></MenuItem>
+                <MenuItem Header="Список" Click="OpenManufacturerList"/>
+                <MenuItem Header="Добавить" Click="OpenManufacturerAdd"/>
             </MenuItem>
             <MenuItem Header="Поставки">
-                <MenuItem Header="Список" Click="OpenSupplyList"></MenuItem>
-                <MenuItem Header="Добавить" Click="OpenSupplyAdd"></MenuItem>
+                <MenuItem Header="Список" Click="OpenSupplyList"/>
+                <MenuItem Header="Добавить" Click="OpenSupplyAdd"/>
             </MenuItem>
             <MenuItem Header="Состояния">
                 <MenuItem Header="Список" Click="OpenStateList"/>

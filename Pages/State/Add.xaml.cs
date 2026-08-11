@@ -30,11 +30,11 @@ namespace VinylRecordsApplication_Bartova.Pages.State
                 {
                     if (this.changeState == null)
                     {
-                        Classes.State newState = new Classes.State();
+                        Classes.State newState = new Classes.State()
                         {
-                            Name = tbName.Text;
-                            Subname = tbSubname.Text;
-                            Description = tbDescription.Text;
+                            Name = tbName.Text,
+                            Subname = tbSubname.Text,
+                            Description = tbDescription.Text,
                         };
                         newState.Save();
                         MessageBox.Show($"Состояние{newState.Name} успешно добавлено.", "Уведомление");
@@ -51,9 +51,9 @@ namespace VinylRecordsApplication_Bartova.Pages.State
                     
                 }
                 else
-                        MessageBox.Show("Пожалуйста, укажите скоращённое наименование состояния", "Предупреждение");
+                        MessageBox.Show("Пожалуйста, укажите сокращённое наименование состояния", "Предупреждение");
             else
-                MessageBox.Show("Пожалуйста, укажите скоращённое наименование состояния", "Предупреждение");
+                MessageBox.Show("Пожалуйста, укажите сокращённое наименование состояния", "Предупреждение");
         }
     }
 }

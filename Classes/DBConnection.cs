@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Data.SqlClient;
 
 namespace VinylRecordsApplication_Bartova.Classes
@@ -13,7 +9,10 @@ namespace VinylRecordsApplication_Bartova.Classes
         public static DataTable Connection(string SQL)
         {
             DataTable dataTable = new DataTable("Datatable");
-            SqlConnection sqlConnection = new SqlConnection("server=; Trusted_Connection=No; Database=;User=;PWD=");
+
+            SqlConnection sqlConnection = new SqlConnection(
+                @"Server=(localdb)\MSSQLLocalDB;Database=VinylRecords;Trusted_Connection=True;");
+
             sqlConnection.Open();
             SqlCommand sqlCommand = sqlConnection.CreateCommand();
             sqlCommand.CommandText = SQL;

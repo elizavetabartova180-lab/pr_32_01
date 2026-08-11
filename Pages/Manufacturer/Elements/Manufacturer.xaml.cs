@@ -38,9 +38,9 @@ namespace VinylRecordsApplication_Bartova.Pages.Manufacturer.Elements
             MainWindow.mainWindow.OpenPage(new Pages.Manufacturer.Add(this.manufacturer));
         private void DeleteManufacturer(object sender, RoutedEventArgs e)
         {
-            if(MessageBox.Show($"Удалить поставщика:{this.manufacturer.Name}?","Уыедомление", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            if(MessageBox.Show($"Удалить поставщика:{this.manufacturer.Name}?","Уведомление", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
-                if(Classes.Record.AllRecords().Where(x=> x.IdManufacturee == manufacturer.Id).Count() > 0)
+                if(Classes.Record.AllRecords().Where(x=> x.IdManufacturer == manufacturer.Id).Count() > 0)
                 {
                     MessageBox.Show($"Поставщика {this.manufacturer.Name} невозможно удалить. Для начала удалите зависимости", "Уведомление");
                 }

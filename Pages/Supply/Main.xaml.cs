@@ -20,7 +20,7 @@ namespace VinylRecordsApplication_Bartova.Pages.Supply
     /// </summary>
     public partial class Main : Page
     {
-        IEnumerable<Classes.Supply> AllSupplies = Classes.Supply.AllSupplies();
+        IEnumerable<Classes.Supply> AllSupplies = Classes.Supply.AllSupples();
 
         public Main()
         {

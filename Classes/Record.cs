@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace VinylRecordsApplication_Bartova.Classes
 {
@@ -52,8 +50,8 @@ namespace VinylRecordsApplication_Bartova.Classes
                         "[IdManufacturer]," +
                         "[Price]," +
                         "[IdState]," +
-                        "[Description]," +
-                    "VALUE(" +
+                        "[Description])" +
+                    "VALUES(" +
                         $"N'{this.Name}'," +
                         $"{this.Year}," +
                         $"{this.Format}," +
@@ -87,6 +85,12 @@ namespace VinylRecordsApplication_Bartova.Classes
         public void Delete()
         {
             Classes.DBConnection.Connection($"DELETE FROM [dbo].[Record] WHERE [Id] = {this.Id};");
+        }
+        public static void Export(string path, IEnumerable<Record> records)
+        {
+            string header = "Id;Name;Year;Format;Size;IdManufacturer;Price;IdState;Description";
+            IEnumerable<string> lines = records.Select(r => $"{r.Id};{r.Name};{r.Year};{r.Format};{r.Size};{r.IdManufacturer};{r.Price};{r.IdState};{r.Description}");
+            System.IO.File.WriteAllLines(path, new string[] { header }.Concat(lines), System.Text.Encoding.UTF8);
         }
 
     }

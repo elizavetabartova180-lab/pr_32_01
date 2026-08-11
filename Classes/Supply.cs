@@ -13,7 +13,7 @@ namespace VinylRecordsApplication_Bartova.Classes
         public string DateDelivery { get; set; }
         public int Count { get; set; }
 
-        public static IEnumerable<Supply> AllSupplies()
+        public static IEnumerable<Supply> AllSupples()
         {
             List<Supply> supples = new List<Supply>();
             DataTable recordQuery = Classes.DBConnection.Connection("SELECT * FROM [dbo].[Supple]");
@@ -42,7 +42,7 @@ namespace VinylRecordsApplication_Bartova.Classes
                     "INSERT INTO [dbo].[Supple]([IdManufacturer], [IdRecord], [DateDelivery], [Count]) " +
                     $"VALUES ({this.IdManufacruer}, {this.IdRecord},'{this.DateDelivery}', {this.Count});");
 
-                this.Id = Supply.AllSupplies().Where(
+                this.Id = Supply.AllSupples().Where(
                     x => x.IdManufacruer == this.IdManufacruer &&
                     x.IdRecord == this.IdRecord &&
                     x.DateDelivery == this.DateDelivery &&
